@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jinzhu/gorm"
+	"github.com/digitalocean/gorm"
 )
 
 type User struct {
@@ -574,7 +574,7 @@ func TestIndexWithPrefixLength(t *testing.T) {
 			if err := DB.CreateTable(table).Error; err != nil {
 				t.Errorf("Failed to create %s table: %v", tableName, err)
 			}
-			if !scope.Dialect().HasIndex(tableName, "idx_index_with_prefixes_length") {
+			if !scope.Dialect().HasIndex(scope.Context(), tableName, "idx_index_with_prefixes_length") {
 				t.Errorf("Failed to create %s table index:", tableName)
 			}
 		})

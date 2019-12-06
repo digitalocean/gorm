@@ -28,3 +28,12 @@ services:
       - MSSQL_DB=gorm
       - MSSQL_USER=gorm
       - MSSQL_PASSWORD=LoremIpsum86
+  app:
+    image: 'golang:1.13-buster'
+    working_dir: /gorm
+    links:
+      - mssql
+      - mysql
+      - postgres
+    volumes:
+      - .:/gorm
